@@ -180,4 +180,5 @@ for i in range(len(devPath)):
     #                     telegramMsg))  # Boot notification to Telegram
     #             # TODO: send to IoTHub
     threadObjList[i] = threading.Thread(target=readSerial)
+    threadObjList[i].start()
     # threadObjList[i] = threading.Thread(target=readSerial, args=[devPath[i], beaconRegex, projectNum, beaconAddr, botToken, dttChatId])
