@@ -92,7 +92,13 @@ def readSerial(devPath, beaconRegex, projectNum, beaconAddr, botToken, dttChatId
     with serial.Serial(devPath, timeout=2) as ser:
         line = ser.readline()
         print(line)
+        requests.get(
+            "https://api.telegram.org/bot" + botToken + "/sendMessage?chat_id=" + dttChatId + "&text={}".format(
+                line))  # Debugging only
         beaconData = beaconRegex.match(str(line, "utf-8"))
+        requests.get(
+            "https://api.telegram.org/bot" + botToken + "/sendMessage?chat_id=" + dttChatId + "&text={}".format(
+                beaconData))  # Debugging only
         print(beaconData)
 
         if beaconData:
