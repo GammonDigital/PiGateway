@@ -87,14 +87,14 @@ beaconRegex = re.compile(r'([\d|A-G]+):([\d|A-G]+):([\d|A-G]{4})([\d|A-G]{4})([\
 
 #TODO: create function for threading
 def readSerial(devPath, beaconRegex, projectNum, beaconAddr, botToken, dttChatId):
-    for i in range(10):
+    for i in range(100):
         with serial.Serial(devPath, timeout=2) as ser:
-            line = ser.readline()
+            line = ser.readline()  # This is a "bytes-like" object, not a string
             print(devPath)
             print(line)
             print(type(line))
             # beaconData = beaconRegex.search(line)
-            beaconData = beaconRegex.search(str(line, "utf-8"))
+            beaconData = beaconRegex.search(str(line, "utf-8"))  # The str(line, encoding) changes line back to a string
             print(beaconData)
 
             if beaconData:
@@ -133,7 +133,7 @@ def readSerial(devPath, beaconRegex, projectNum, beaconAddr, botToken, dttChatId
                             telegramMsg))  # Boot notification to Telegram
                     # TODO: send to IoTHub
 
-threadObjList = list(range(4))
+threadObjList = list(range(4))  # Assume max number of USB device is 4
 
 # while True:
     # global devPath
