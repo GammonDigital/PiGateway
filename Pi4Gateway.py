@@ -82,17 +82,15 @@ for vidpid in vidpidList:
         devPath.append(port.device)
     # devPath += devPath_re.findall(portListRaw)
 
-# Testing
-requests.get(
-            "https://api.telegram.org/bot" + botToken + "/sendMessage?chat_id=" + dttChatId + "&text={}".format(
-                "HelloWorld!"))  # Debugging only
-
 # Read and filter data from registered beacons
 beaconRegex = re.compile(r'([\d|A-G]+):([\d|A-G]+):([\d|A-G]{4})([\d|A-G]{4})([\d|A-G]{2}):([\d|\w]{3}-[\d|\w]{3}-[\d|\w]{3}):([\d|A-G]{12}):(-\d{3})')
 # beaconRegex = re.compile(r'([\d|A-G]{8}):([\d|A-G]{32}):([\d|A-G]{4})([\d|A-G]{4})([\d|A-G]{2}):([\d|A-G]{12}):(-\d{3})')
 
 #TODO: create function for threading
 def readSerial(devPath, beaconRegex, projectNum, beaconAddr, botToken, dttChatId):
+    requests.get(
+        "https://api.telegram.org/bot" + botToken + "/sendMessage?chat_id=" + dttChatId + "&text={}".format(
+            "HelloThread!"))  # Debugging only
     with serial.Serial(devPath, timeout=2) as ser:
         line = ser.readline()
         print(line)
