@@ -135,7 +135,7 @@ threadObjList = list(range(4))
 
 while True:
     # global devPath
-    for i in len(devPath):
+    for i in range(len(devPath)):
         # with serial.Serial(item, timeout=2) as ser:  #(item)
         #     line = ser.readline()
         #     print(line)
