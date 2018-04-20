@@ -71,7 +71,6 @@ for item in devices:
         # TODO: record port number
 '''
 
-
 # Get relevant device dev path
 devPath = []
 devPath_re = re.compile(r"/dev/tty[\w|\d]*\d")
@@ -88,9 +87,10 @@ beaconRegex = re.compile(r'([\d|A-G]+):([\d|A-G]+):([\d|A-G]{4})([\d|A-G]{4})([\
 
 #TODO: create function for threading
 def readSerial(devPath, beaconRegex, projectNum, beaconAddr, botToken, dttChatId):
-    while True:
+    for i in range(10):
         with serial.Serial(devPath, timeout=2) as ser:
             line = ser.readline()
+            print(devPath)
             print(line)
             print(type(line))
             beaconData = beaconRegex.search(line)
