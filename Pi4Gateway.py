@@ -93,8 +93,8 @@ def readSerial(devPath, beaconRegex, projectNum, beaconAddr, botToken, dttChatId
             print(devPath)
             print(line)
             print(type(line))
-            beaconData = beaconRegex.search(line)
-            # beaconData = beaconRegex.match(str(line, "utf-8"))
+            # beaconData = beaconRegex.search(line)
+            beaconData = beaconRegex.search(str(line, "utf-8"))
             print(beaconData)
 
             if beaconData:
