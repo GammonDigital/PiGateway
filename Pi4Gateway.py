@@ -88,21 +88,13 @@ beaconRegex = re.compile(r'([\d|A-G]+):([\d|A-G]+):([\d|A-G]{4})([\d|A-G]{4})([\
 
 #TODO: create function for threading
 def readSerial(devPath, beaconRegex, projectNum, beaconAddr, botToken, dttChatId):
-    # requests.get(
-    #     "https://api.telegram.org/bot" + botToken + "/sendMessage?chat_id=" + dttChatId + "&text={}".format(
-    #         "HelloThread!"))  # Debugging only
+    # while True:
     with serial.Serial(devPath, timeout=2) as ser:
         line = ser.readline()
         print(line)
-        requests.get(
-            "https://api.telegram.org/bot" + botToken + "/sendMessage?chat_id=" + dttChatId + "&text={}".format(
-                line))  # Debugging only
+        print(type(line))
         beaconData = beaconRegex.search(line)
         # beaconData = beaconRegex.match(str(line, "utf-8"))
-
-        requests.get(
-            "https://api.telegram.org/bot" + botToken + "/sendMessage?chat_id=" + dttChatId + "&text={}".format(
-                beaconData))  # Debugging only
         print(beaconData)
 
         if beaconData:
