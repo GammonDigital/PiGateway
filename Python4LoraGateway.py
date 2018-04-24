@@ -23,4 +23,4 @@ print(devPath)
 #         print(line)
 
 with serial.Serial(devPath) as ser:
-    ser.write(b'05 00 01 0A 08 10 00 07 01 04 12 34 56 78 1e')
+    ser.write(b'05 00 01 0A 08 10 00 07 01 04 12 34 56 78 1e\r\n')
