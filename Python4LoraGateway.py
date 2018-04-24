@@ -16,7 +16,7 @@ for vidpid in vidpidList:
     portDict = serial.tools.list_ports.grep(vidpid)
     for port in portDict:
         devPath = port.device
-
+print(devPath)
 # while True:
 #     with serial.Serial("COM7", timeout=2) as ser:
 #         line = ser.read(111)
