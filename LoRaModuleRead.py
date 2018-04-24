@@ -19,5 +19,6 @@ for vidpid in vidpidList:
 print(devPath)
 while True:
     with serial.Serial(devPath, timeout=2) as ser:
-        line = ser.read(111)
+        # line = ser.read(111)
+        line = ser.readline()
         print(line)
