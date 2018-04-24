@@ -1,4 +1,3 @@
-# import serial
 import re
 import datetime
 import json
