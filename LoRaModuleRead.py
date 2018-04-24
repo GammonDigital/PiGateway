@@ -18,6 +18,6 @@ for vidpid in vidpidList:
         devPath = port.device
 print(devPath)
 while True:
-    with serial.Serial("COM7", timeout=2) as ser:
+    with serial.Serial(devPath, timeout=2) as ser:
         line = ser.read(111)
         print(line)
